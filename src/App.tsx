@@ -13,12 +13,12 @@ type TodoType = {
 function App() {
   const [tasks, setTasks] = useState<TodoType[]>([])
 
-  const addTask = (name: string) => {
+  function addTask(name: string) {
     const newTask = { id: `todo-${nanoid()}`, name, completed: false }
-    setTasks([...tasks, newTask])
+    setTasks((pre) => [...pre, newTask])
   }
 
-  const toggleTaskCompleted = (id: string) => {
+  function toggleTaskCompleted(id: string) {
     const updatedTasks = tasks.map((task) => {
       if (id === task.id) {
         return { ...task, completed: !task.completed }
@@ -28,12 +28,12 @@ function App() {
     setTasks(updatedTasks)
   }
 
-  const deleteTask = (id: string) => {
+  function deleteTask(id: string) {
     const remainingTasks = tasks.filter((task) => task.id !== id)
     setTasks(remainingTasks)
   }
 
-  const editTaskName = (id: string, newName: string) => {
+  function editTaskName(id: string, newName: string) {
     const editedTaskList = tasks.map((task) => {
       if (id === task.id) {
         return { ...task, name: newName }

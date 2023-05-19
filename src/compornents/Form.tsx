@@ -7,12 +7,12 @@ type FormProps = {
 export default function Form({ addTask }: FormProps) {
   const [name, setName] = React.useState<string>("")
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     console.log(e.target.value)
     setName(e.target.value)
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     addTask(name)
     setName("")
